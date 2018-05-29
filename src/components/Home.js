@@ -1,6 +1,7 @@
 import React from 'react';
 import Word from './Word';
 import {Link} from 'react-router-dom';
+import '../css/style.css';
 
 class Home extends React.Component {
   constructor(props){
@@ -19,24 +20,24 @@ class Home extends React.Component {
   render() {
     console.log(this.props.words)
     return (
-        <div>
+        <div className="container">
           <div>
-            <Link to='/'>Home</Link>
-            <Link to='/quiz'>Quiz</Link>
+            <div className="button linkactive">HOME</div>
+            <Link to='/quiz' className="button links">QUIZ</Link>
           </div>
           {this.props.words.map((item, i) => {
               return ( <Word key={i} index={i} editWord={this.editWord} deleteWord={this.deleteWord}>{item}</Word>)}
             )}
-          <div>
+          <div className="box">
             <input type = "text" ref = "addWord" / >
             <input type = "text" ref = "addTrans" / >
-            <button onClick = {() => {
+            <div className="button small resize" onClick = {() => {
               this.props.addWord(this.refs.addWord.value, this.refs.addTrans.value);
               this.refs.addWord.value = '';
               this.refs.addTrans.value = '';
             }} >
               Add new word
-            < /button>
+            < /div>
           </div>
         </div>
     )

@@ -11,23 +11,53 @@ class App extends React.Component {
     this.state = { words: [
       {
         id: 0,
-        word: "w0",
-        trans: "t0"
+        word: "Apple",
+        trans: "Яблоко"
       },
       {
         id: 1,
-        word: "w1",
-        trans: "t1"
+        word: "Banana",
+        trans: "Банан"
       },
       {
         id: 2,
-        word: "w2",
-        trans: "t2"
+        word: "Lime",
+        trans: "Лайм"
       },
       {
         id: 3,
-        word: "w3",
-        trans: "t3"
+        word: "Watermellon",
+        trans: "Арбуз"
+      },
+      {
+        id: 4,
+        word: "Potato",
+        trans: "Картошка"
+      },
+      {
+        id: 5,
+        word: "Cucumber",
+        trans: "Огурец"
+      },
+      {
+        id: 6,
+        word: "Car",
+        trans: "Машина"
+      },
+      {
+        id: 7,
+        word: "Door",
+        trans: "Дверь"
+      },
+      {
+        id: 8,
+        word: "Shop",
+        trans: "Магазин"
+      },
+      {
+        id: 9,
+        word: "Sky",
+        trans: "Небо"
       },
     ]}
     this.addWord = this.addWord.bind(this);
@@ -76,7 +106,6 @@ class App extends React.Component {
 
         <BrowserRouter>
           <div>
-            {console.log(this.state.words)}
             <Route exact path="/" render={()=><Home words={this.state.words} deleteWord={this.deleteWord} addWord={this.addWord} editWord={this.editWord} />} />
             <Route path="/quiz" render={()=><Quiz words={this.state.words}  />} />
           </div>

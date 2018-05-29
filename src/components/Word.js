@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../css/style.css';
 
 class Word extends Component {
   constructor(props){
@@ -32,19 +33,21 @@ class Word extends Component {
   rendNorm() {
     return (
       <div className="box">
-        <div>{this.props.children.word} - {this.props.children.trans}</div>
-        <button onClick={this.edit}>Edit</button>
-        <button onClick={this.remove}>Delete</button>
+        <div className="text">{this.props.children.word} - {this.props.children.trans}</div>
+        <div className="button small" onClick={this.edit}>Edit</div>
+        <div className="button small" onClick={this.remove}>Delete</div>
       </div>
     );
   };
   rendEdit() {
     return (
-      <div>
+      <div className="box">
         <input type="text" ref="newWord" defaultValue={this.props.children.word} />
         <input type="text" ref="newTrans" defaultValue={this.props.children.trans}/>
-        <button onClick={this.save}>Save</button>
-        <button onClick={this.cancel}>Cancel</button>
+        <div>
+          <div className="button small" onClick={this.save}>Save</div>
+          <div className="button small" onClick={this.cancel}>Cancel</div>
+        </div>
       </div>
     );
   };
