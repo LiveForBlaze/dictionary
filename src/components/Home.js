@@ -18,7 +18,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props.words)
     return (
         <div className="container">
           <div>

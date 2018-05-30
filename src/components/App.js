@@ -6,6 +6,7 @@ import Quiz from './Quiz';
 
 
 class App extends React.Component {
+
   constructor(){
     super();
     this.state = { words: [
@@ -63,25 +64,32 @@ class App extends React.Component {
     this.addWord = this.addWord.bind(this);
     this.editWord = this.editWord.bind(this);
     this.deleteWord = this.deleteWord.bind(this);
+    this.indexOf = this.indexOf.bind(this);
   }
 
+  indexOf(arr, i) {
+    for(var idx = 0, l = arr.length;arr[idx] && arr[idx].id !== i;idx++);
+    return idx === l ? -1 : idx;
+  }
 
   addWord(word, translation) {
-      let arr = this.state.words;
+      let arr = this.state.words.slice();
       arr.push({
-        id: arr.length,
+        id: this.state.words[this.state.words.length -1].id +1,
         word: word,
         trans: translation
       });
       this.setState({
         words: arr
       });
+
       return this.state
   }
 
   editWord(w, t, i) {
-    var arr = this.state.words;
-    arr[i] = {
+    var arr = this.state.words.slice();
+
+    arr[this.indexOf(arr, i)] = {
       id: i,
       word: w,
       trans: t
@@ -89,12 +97,15 @@ class App extends React.Component {
     this.setState({
       words: arr
     });
+
       return this.state
   }
 
   deleteWord(i){
-    var arr = this.state.words;
-    arr.splice(i, 1);
+
+    let arr = this.state.words.slice();
+
+    arr.splice(this.indexOf(arr, i), 1);
     this.setState({
       words: arr
     });
